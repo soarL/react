@@ -90,10 +90,16 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "http://asset.eph.com/src/app_user/",
   "devDependencies": {
     "axios": "^0.18.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
-    "redux": "^3.7.2"
+    "react-redux": "^5.0.7",
+    "react-router": "^3.0.0",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "redbox-react": "^1.2.10"
   }
 }
