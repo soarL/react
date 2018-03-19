@@ -1,5 +1,8 @@
-import axios from 'axios';
+import promise from 'es6-promise'
 import * as config from '@/config' 
+promise.polyfill();
+const  axios = require('axios')
+
 /**
  * @params method
  * @params url {string} 请求地址  例如：/login 配合baseURL组成完整请求地址
