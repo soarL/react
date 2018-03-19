@@ -1,17 +1,15 @@
 import React,{ Component } from 'react'
 import { Link } from 'react-router-dom'
-
+import './index.less'
 
 class Header extends Component{
 	render() {
 		return (
-			<div>
-				<nav className="navbar navbar-light">
-				  <ul className="nav navbar-nav">
+			<div className="header">
+				  <ul className="nav">
 				    <li><Link to="/">首页</Link></li>
-				    <li><Link to="/home">home</Link></li>
+				    <li><Link to="/antd">antd</Link></li>
 				  </ul> 
-				</nav>
 			</div>
 		)
 	}

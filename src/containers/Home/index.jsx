@@ -2,6 +2,7 @@ import React,{ Component } from 'react'
 import { connect } from 'react-redux'
 import homeApi from '@/api/home'
 import { onchange , back } from '@/actions/home'
+import { Button } from 'antd'
 
 import './index.less'
 
@@ -18,8 +19,8 @@ class Home extends Component{
 				<span className='red-font'>我是Data页面</span>
 				<hr/>
 				<span>这是通过redux 传来的值 : <span className='red-font'>{ this.props.homeReducer.value }</span></span>
-				<button onClick={ this.hhs.bind(this) }>点击我获取异步的数据</button>
-				<button onClick={this.props.back.bind(this,'xxxxxx')}>点我获取同步的数据</button>
+				<Button type='primary' onClick={ this.hhs.bind(this) }>点击我获取异步的数据</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<Button type='primary' onClick={this.props.back.bind(this,'xxxxxx')}>点我获取同步的数据</Button>
 			</div>
 		)
 	}

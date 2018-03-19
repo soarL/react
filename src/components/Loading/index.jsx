@@ -1,9 +1,13 @@
 import React,{ Component } from 'react'
+import { Spin } from 'antd'
+import './index.less'
 
 class Loading extends Component{
 	render(){
 		return (
-			<div>Loading............</div>
+			<div className="loading">
+				<Spin size="large" />	
+			</div>
 		)
 	}
 }
