@@ -1,5 +1,7 @@
 import React,{ Component } from 'react'
-import { connect } from 'react-redux'
+
+import 'moment/locale/zh-cn'
+
 import { 
 	Button,
 	Icon,
@@ -7,13 +9,21 @@ import {
 	Dropdown,
 	Pagination,
 	message,
+	Checkbox,
+	DatePicker,
 } from 'antd'
 
 import './index.less'
 
+
+const { RangePicker} = DatePicker 
+
 class Antd extends Component{
 	state = {
 		iconLoading:false
+	}
+	componentWillMount() {
+		message.info('页面切换成功');
 	}
 	enterIconLoading(){
 
@@ -33,7 +43,17 @@ class Antd extends Component{
 		console.log(pageNumber)
 	}
 
+	checkbox = (e)=>{
+		console.log(e.target.checked)
+	}
 
+	datePicker= (e,dateString)=>{
+		console.log(dateString)
+	}
+
+	rangePicker=(e,dateString)=>{
+		console.log(dateString)
+	}
 
 	render() {
 
@@ -51,6 +71,8 @@ class Antd extends Component{
 
 		return (
 			<div className='antds'>
+				<h3>基础用法</h3>
+				
 				<div>
 					hello antd button
 					<hr/>
@@ -76,7 +98,7 @@ class Antd extends Component{
 					<p>
 						<Button type="primary" loading>Loading</Button>
 
-						<Button type="primary" icon="poweroff" loading={this.state.iconLoading} onClick={this.enterIconLoading.bind(this)}>
+						<Button type="primary" icon="poweroff" loading={this.state.iconLoading} onClick={ this.enterIconLoading.bind(this) }>
 						          Click me!
 						</Button>
 						<Button type="primary" shape="circle" loading />
@@ -107,16 +129,18 @@ class Antd extends Component{
 					hello antd message
 					<hr/>
 					<Button type="primary" onClick={info}>Display normal message</Button>
+
+					<Checkbox onChange={ this.checkbox } defaultChecked > Checkbox </Checkbox>
+
+					<DatePicker onChange={this.datePicker} placeholder='请选择开始日期'/>
+
+					<RangePicker onChange={this.rangePicker} placeholder={['xxx','xxx']}/>
 				</div>
 			</div>
 		)
 	}
 } 
     
-const mapStateToProps = (state)=>{
-	return state
-}
 
-export default connect(mapStateToProps,{
 
-})(Antd)
+export default Antd

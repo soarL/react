@@ -16,8 +16,18 @@ import {
 // 容器组件 业务组件就是有状态的组件//按需加载
 import Home from '@/containers/Home'
 
-const AsyncAntd = Loadable({
-  loader: () => import('@/containers/Antd'),
+const AsyncAntdBase = Loadable({
+  loader: () => import('@/components/Antd/base'),
+  loading: loading
+})
+
+const AsyncAntdFrom = Loadable({
+  loader: () => import('@/components/Antd/from'),
+  loading: loading
+})
+
+const AsyncAntdAlert = Loadable({
+  loader: () => import('@/components/Antd/alert'),
   loading: loading
 })
 
@@ -40,10 +50,11 @@ class App extends Component {
                  <Col span={20}>
                    <Switch>
                      <Route path="/" exact component={Home} />
-                     <Route path="/antd" component={ AsyncAntd }/>
+                     <Route path="/antd/base" component={ AsyncAntdBase }/>
+                     <Route path="/antd/from" component={ AsyncAntdFrom }/>
+                     <Route path="/antd/alert" component={ AsyncAntdAlert }/>
                  </Switch>
                  </Col>
-
                </Row>
 
                <Row>
