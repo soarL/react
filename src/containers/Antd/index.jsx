@@ -12,6 +12,9 @@ import {
 import './index.less'
 
 class Antd extends Component{
+	componentWillMount() {
+		message.info('你好')
+	}
 	state = {
 		iconLoading:false
 	}

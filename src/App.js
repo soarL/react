@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route , Switch , HashRouter } from 'react-router-dom';
 import Loadable from 'react-loadable'
-import { Row, Col } from 'antd'
+import { Row, Col} from 'antd'
 import './App.less'
 
 // 只负责显示的组件
@@ -22,6 +22,10 @@ const AsyncAntd = Loadable({
 })
 
 class App extends Component {
+  componentDidMount() {
+    // 做于预渲染
+    AsyncAntd.preload()
+  }
 
   render() {
     return (
