@@ -1,6 +1,9 @@
 import React,{ Component } from 'react'
 import { Link } from 'react-router-dom'
 import './index.less'
+import {
+	Divider
+} from 'antd'
 
 class Header extends Component{
 	render() {
@@ -8,8 +11,8 @@ class Header extends Component{
 			<div className="header">
 				  <ul className="nav">
 				    <li><Link to="/">首页</Link></li>
-				    <li><Link to="/antd">antd</Link></li>
 				  </ul> 
+				  <Divider dashed/>
 			</div>
 		)
 	}

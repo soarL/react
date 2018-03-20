@@ -1,5 +1,4 @@
 import React,{ Component } from 'react'
-import { connect } from 'react-redux'
 import { 
 	Button,
 	Icon,
@@ -7,6 +6,7 @@ import {
 	Dropdown,
 	Pagination,
 	message,
+	Divider,
 } from 'antd'
 
 import './index.less'
@@ -56,7 +56,7 @@ class Antd extends Component{
 			<div className='antds'>
 				<div>
 					hello antd button
-					<hr/>
+					<Divider dashed/>
 					<p>
 						<Button type="primary" size="large"> btn-primary large</Button>
 						<Button type="primary" size="small"> btn-primary small </Button>
@@ -94,7 +94,7 @@ class Antd extends Component{
 				
 				<div>
 					hello antd Pagination
-					<hr/>
+					<Divider dashed/>
 					<Pagination defaultCurrent={1} total={50}/>
 					<Pagination defaultCurrent={5} total={500}/>
 					<Pagination defaultCurrent={5} total={500} showSizeChanger/>
@@ -108,7 +108,7 @@ class Antd extends Component{
 				
 				<div>
 					hello antd message
-					<hr/>
+					<Divider dashed/>
 					<Button type="primary" onClick={info}>Display normal message</Button>
 				</div>
 			</div>
@@ -116,10 +116,5 @@ class Antd extends Component{
 	}
 } 
     
-const mapStateToProps = (state)=>{
-	return state
-}
 
-export default connect(mapStateToProps,{
-
-})(Antd)
+export default Antd
