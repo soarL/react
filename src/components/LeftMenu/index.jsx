@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import { Menu ,Icon} from 'antd'
+
 import { Link } from 'react-router-dom'
 
 const SubMenu = Menu.SubMenu;
@@ -20,15 +21,15 @@ class LeftMenu extends Component{
 			       mode="inline"
 			       inlineCollapsed={false}
 			     >
-	       <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Antd</span></span>}>
+	       <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Ant design</span></span>}>
 	           <Menu.Item key="1">
-	           		<Link to="/antd/base"/>基础用法
+	          		<Link to="/antd/base">基础应用</Link>
 	           </Menu.Item>
 	           <Menu.Item key="2">
-	           		<Link to="/antd/from" /> 表单
+	           		<Link to="/antd/from">表单</Link>
 	           </Menu.Item>
 	           <Menu.Item key="3">
-	           		<Link to="/antd/alert "/>信息提示
+					<Link to="/antd/alert">信息提示</Link>
 	           </Menu.Item>
 	           <Menu.Item key="4">Option 4</Menu.Item>
 	       </SubMenu>
