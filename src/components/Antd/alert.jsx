@@ -8,13 +8,10 @@ import {
 	Spin,
 	BackTop,
 	Divider,
-	Badge,
-	Icon 
 } from 'antd'
 
 import './index.less'
 
-const ButtonGroup = Button.Group;
 const confirm = Modal.confirm
 class Alert extends Component {
 	constructor(props){

@@ -19,9 +19,6 @@ import './index.less'
 const { RangePicker} = DatePicker 
 
 class Antd extends Component{
-	componentWillMount() {
-		message.info('你好')
-	}
 	state = {
 		iconLoading:false
 	}
