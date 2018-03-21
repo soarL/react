@@ -15,14 +15,15 @@
 1、React  + React-Router-dom  
 2、Redux   react-redux 状态管理插件
 3、highcharts 画表格插件
-4、bootstrap    默认css 公共css 样式
+4、ant design UI组件库
 
 命名规范
 
 css篇
     构建工具配置less，管理组件css，最外层css以组件名字命名、以避免css样式冲突。
-    基础css使用bootstrap
     全部小写 使用 “-”链接 示例    form-title 
+    App.less 为全局共有css样式
+    theme.js 为定制ant design 定制主题色的文件 
 
 js篇
 

@@ -34,9 +34,9 @@ const AsyncAntdAlert = Loadable({
 class App extends Component {
   componentDidMount() {
     // 做于预渲染
-    // AsyncAntdBase.preload()
-    // AsyncAntdFrom.preload()
-    // AsyncAntdAlert.preload()
+    AsyncAntdBase.preload()
+    AsyncAntdFrom.preload()
+    AsyncAntdAlert.preload()
   }
 
   render() {
@@ -61,7 +61,6 @@ class App extends Component {
                      <Route path="/antd/alert" component={ AsyncAntdAlert }/>
                  </Switch>
                  </Col>
-
                </Row>
 
                <Row>

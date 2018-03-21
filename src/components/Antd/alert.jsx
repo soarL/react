@@ -7,11 +7,13 @@ import {
 	Popconfirm,
 	Spin,
 	BackTop,
-	Divider 
+	Divider,
 } from 'antd'
 
+import './index.less'
+
 const confirm = Modal.confirm
-class Alert extends Component{
+class Alert extends Component {
 	constructor(props){
 		super(props)
 		this.state={
@@ -136,6 +138,9 @@ class Alert extends Component{
 	render(){
 		return(
 			<div className="alerts">
+
+  				<div className="height-20px" />
+
 				信息提示
 				<Divider dashed/>
 				<div>
@@ -238,6 +243,7 @@ class Alert extends Component{
 					<Button onClick={this.error}>Error</Button>
 					<Button onClick={this.warning}>Warning</Button>
 				</div>
+
 
 				气泡确认框
 				<Divider dashed/>
