@@ -19,21 +19,44 @@
 
 
 const user = [
-		{'min':3,message:'用户名长度必须大于3位'},
-		{'max':9,message:'用户名长度不能超过9位'},
-		{'required':true, message:'该项为必选项'}]
+		{min:3,message:'用户名长度必须大于3位'},
+		{max:9,message:'用户名长度不能超过9位'},
+		{required:true, message:'该项为必选项'}]
+
+const password=[
+		{min:3,message:'密码长度必须大于3位'},
+		{max:9,message:'密码长度不能超过9位'},
+		{required:true, message:'该项为必选项'}]
 
 const email =[
 		{type: 'email', message: 'The input is not valid E-mail!'},
-		{required: true, message: 'Please input your E-mail!'}]
+		{required: false, message: 'Please input your E-mail!'}]
 
-const password=[
-		{'min':3,message:'密码长度必须大于3位'},
-		{'max':9,message:'密码长度不能超过9位'},
-		{'required':true, message:'该项为必选项'}]
+const smsCode = [
+		{min:6,message:'必须为6位数验证码'},
+		{max:6,message:'验证码只能为6位数'},
+		{required:true,message:'请填写验证码'}]
+
+const isDisabled = (getFieldsError)=>{
+	// 接收getFieldsError()对象，返回boolean
+	return Object.keys(getFieldsError).some(filed=>getFieldsError[filed])
+}
+
+const isChecked =(message)=>{
+	return (rule,value,callback)=>{
+		if(value){
+			callback()
+		}else{
+			callback(message)
+		}
+	}
+}
 
 export{
 	user,
 	email,
-	password
+	password,
+	isDisabled,
+	isChecked,
+	smsCode
 } 
