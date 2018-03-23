@@ -11,15 +11,19 @@ import {
 import SmsCodeInput from '@/components/SmsCodeInput'
 
 import * as verify from '@/config/verify-rule.js'
+import APIHome from '@/api/home'
 
 
 const FormItem = Form.Item
 
 
 class WrapFrom extends Component {
-	
-	sendCode(){
-		message.success('短信发送成功')
+
+	// 异步
+	async sendCode(){
+		// let phone = this.props.form.getFieldValue('smsCode')
+		let data = await APIHome.getData()
+		return data.res
 	}
 
 	render(){
@@ -53,13 +57,13 @@ class WrapFrom extends Component {
 				}
 				</FormItem>
 
-				<FormItem label="E-mail" >
+				<FormItem hasFeedback>
 		          {getFieldDecorator('email', {
 		            rules: verify.email,
 		          })(<Input placeholder='请输入您的邮箱'/>)}
 				</FormItem>
 
-				<SmsCodeInput 
+				<SmsCodeInput
 					placeholder='请输入验证码' 
 					prefix={<Icon type='phone'/>}  
 					btntype='primary' 
@@ -67,8 +71,8 @@ class WrapFrom extends Component {
 					getFieldDecorator={ getFieldDecorator } 
 					getFieldDecoratorAGM={[
 						"smsCode",{rules:verify.smsCode}
-						]} callback={this.sendCode}/>
-				
+						]} callback={this.sendCode}
+					/>
 				<FormItem >
 			      {getFieldDecorator('remember', {
 			      	valuePropName: 'checked',
