@@ -7,6 +7,9 @@ import {
 	Checkbox,
 	message
 } from 'antd'
+
+import SmsCodeInput from '@/components/SmsCodeInput'
+
 import * as verify from '@/config/verify-rule.js'
 
 
@@ -14,14 +17,9 @@ const FormItem = Form.Item
 
 
 class WrapFrom extends Component {
-	state={
-		code:'点击获取验证码'
-	}
-	code(){
-
-		this.setState({
-			code:'60s后重新获取'
-		})
+	
+	sendCode(){
+		message.success('短信发送成功')
 	}
 
 	render(){
@@ -61,16 +59,15 @@ class WrapFrom extends Component {
 		          })(<Input placeholder='请输入您的邮箱'/>)}
 				</FormItem>
 
-				<FormItem hasFeedback>
-				{
-					getFieldDecorator('code',{
-						rules:verify.smsCode
-					})(<Input prefix={<Icon type='phone' />} type='text' placeholder='请输入验证码'/>)
-				}
-				</FormItem>
-				<FormItem>
-					<Button type='primary' onClick={this.code.bind(this)}>{this.state.code}</Button>
-				</FormItem>
+				<SmsCodeInput 
+					placeholder='请输入验证码' 
+					prefix={<Icon type='phone'/>}  
+					btntype='primary' 
+					second={ 60 } 
+					getFieldDecorator={ getFieldDecorator } 
+					getFieldDecoratorAGM={[
+						"smsCode",{rules:verify.smsCode}
+						]} callback={this.sendCode}/>
 				
 				<FormItem >
 			      {getFieldDecorator('remember', {
