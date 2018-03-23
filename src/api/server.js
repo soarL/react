@@ -14,7 +14,7 @@ const  axios = require('axios')
 
 export default class Server {
 
-  axiosGET(url,params={},option={}){
+  GET(url,params={},option={}){
     return new Promise((resolve, reject) => {
       let _options = {
         method:"get",
@@ -39,7 +39,7 @@ export default class Server {
     })
   }
   
-  axiosPOST(url,data={},option={}){
+  POST(url,data={},option={}){
     return new Promise((resolve, reject) => {
       let _options = {
         method:"post",
@@ -77,4 +77,8 @@ export default class Server {
     })
   }
 
+  use(){
+    console.log('自己看文档啊')    
+  }
+  
 }

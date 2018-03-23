@@ -23,7 +23,7 @@ class WrapFrom extends Component {
 	async sendCode(){
 		// let phone = this.props.form.getFieldValue('smsCode')
 		let data = await APIHome.getData()
-		return data.res
+		return data.data[1].newsName
 	}
 
 	render(){
@@ -91,7 +91,6 @@ class WrapFrom extends Component {
 						登入
 					</Button>
 				</FormItem>
-
 			</Form>
 		)
 	}
