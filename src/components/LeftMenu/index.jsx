@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 const SubMenu = Menu.SubMenu;
 
+const Item = Menu.Item
+
 class LeftMenu extends Component{
 
 	handleClick = (e) => {
@@ -22,24 +24,33 @@ class LeftMenu extends Component{
 			       inlineCollapsed={false}
 			     >
 	       <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Ant design</span></span>}>
-	           <Menu.Item key="1">
+	           <Item key="1">
 	          		<Link to="/antd/base">基础应用</Link>
-	           </Menu.Item>
-	           <Menu.Item key="2">
+	           </Item>
+	           <Item key="2">
 	           		<Link to="/antd/from">表单</Link>
-	           </Menu.Item>
-	           <Menu.Item key="3">
+	           </Item>
+	           <Item key="3">
 					<Link to="/antd/alert">信息提示</Link>
-	           </Menu.Item>
-	           <Menu.Item key="4">Option 4</Menu.Item>
+	           </Item>
+	           <Item key="4">
+	           		<Link to='/antd/steps'>步骤条</Link>
+	           </Item>
+	           <Item key="5">
+	           		<Link to='/antd/upload'>文件上传</Link>
+	           </Item>
+				<Item key='6'>
+					<Link to='/antd/tabs'>标签页</Link>
+				</Item>
+
 	       </SubMenu>
 
 	       <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-	         <Menu.Item key="5">Option 5</Menu.Item>
-	         <Menu.Item key="6">Option 6</Menu.Item>
+	         <Item key="5">Option 5</Item>
+	         <Item key="6">Option 6</Item>
 	         <SubMenu key="sub3" title="Submenu">
-	           <Menu.Item key="7">Option 7</Menu.Item>
-	           <Menu.Item key="8">Option 8</Menu.Item>
+	           <Item key="7">Option 7</Item>
+	           <Item key="8">Option 8</Item>
 	         </SubMenu>
 	       </SubMenu>
 	     </Menu>

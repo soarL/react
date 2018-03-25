@@ -5,7 +5,8 @@ import {
 	Input,
 	Button,
 	Checkbox,
-	message
+	message,
+	Switch,
 } from 'antd'
 
 import SmsCodeInput from '@/components/SmsCodeInput'
@@ -73,6 +74,16 @@ class WrapFrom extends Component {
 						"smsCode",{rules:verify.smsCode}
 						]} callback={this.sendCode}
 					/>
+
+				<FormItem>
+				{
+					getFieldDecorator('youhui',{
+						rules:[{
+							validator:verify.isChecked("请同意使用优惠卷"),
+						}]
+					})(<Switch/>)
+				} 使用优惠卷
+				</FormItem>
 				<FormItem >
 			      {getFieldDecorator('remember', {
 			      	valuePropName: 'checked',

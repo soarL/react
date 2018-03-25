@@ -31,12 +31,30 @@ const AsyncAntdAlert = Loadable({
   loading: loading
 })
 
+const AsyncAntdSteps = Loadable({
+  loader: () => import('@/components/Antd/steps'),
+  loading: loading
+})
+
+const AsyncAntdUpload = Loadable({
+  loader: () => import('@/components/Antd/upload'),
+  loading: loading
+})
+
+const AsyncAntdTabs = Loadable({
+  loader: () => import('@/components/Antd/tabs'),
+  loading: loading
+})
+
 class App extends Component {
   componentDidMount() {
     // 做于预渲染
     AsyncAntdBase.preload()
     AsyncAntdFrom.preload()
     AsyncAntdAlert.preload()
+    AsyncAntdSteps.preload()
+    AsyncAntdUpload.preload()
+    AsyncAntdTabs.preload()
   }
 
   render() {
@@ -59,6 +77,9 @@ class App extends Component {
                      <Route path="/antd/base" component={ AsyncAntdBase }/>
                      <Route path="/antd/from" component={ AsyncAntdFrom }/>
                      <Route path="/antd/alert" component={ AsyncAntdAlert }/>
+                     <Route path="/antd/steps" component={ AsyncAntdSteps }/>
+                     <Route path="/antd/upload" component={ AsyncAntdUpload }/>
+                     <Route path="/antd/tabs" component={ AsyncAntdTabs }/>
                  </Switch>
                  </Col>
                </Row>
