@@ -1,15 +1,10 @@
-let arr = [1,2,3,4,5,6,7,8]
-
-// Array.prototype.remove = function(val) {
-// 	var index = this.indexOf(val);
-// 	if (index > -1) {
-// 		this.splice(index, 1);
-// 	}
-// }
-
-// arr.remove(5)
-// console.log(arr)
+var arr1 = [123,4512,35123,5123,5123,523]
+var arr2 = ["cccc",...arr1]
 
 
-console.log(arr.splice(2,1))
-console.log(arr)
+var obj = {
+	username:'name1',
+	password:'123',
+	xxx:'asdasd'
+}
+console.log(...obj)

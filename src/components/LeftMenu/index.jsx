@@ -42,6 +42,9 @@ class LeftMenu extends Component{
 				<Item key='6'>
 					<Link to='/antd/tabs'>标签页</Link>
 				</Item>
+				<Item key='7'>
+					<Link to='/antd/carousel'>轮播图</Link>
+				</Item>
 
 	       </SubMenu>
 

@@ -46,6 +46,11 @@ const AsyncAntdTabs = Loadable({
   loading: loading
 })
 
+const AsyncAntdCarousel = Loadable({
+  loader: () => import('@/components/Antd/carousel'),
+  loading: loading
+})
+
 class App extends Component {
   componentDidMount() {
     // 做于预渲染
@@ -55,6 +60,7 @@ class App extends Component {
     AsyncAntdSteps.preload()
     AsyncAntdUpload.preload()
     AsyncAntdTabs.preload()
+    AsyncAntdCarousel.preload()
   }
 
   render() {
@@ -80,6 +86,7 @@ class App extends Component {
                      <Route path="/antd/steps" component={ AsyncAntdSteps }/>
                      <Route path="/antd/upload" component={ AsyncAntdUpload }/>
                      <Route path="/antd/tabs" component={ AsyncAntdTabs }/>
+                     <Route path="/antd/carousel" component={ AsyncAntdCarousel }/>
                  </Switch>
                  </Col>
                </Row>

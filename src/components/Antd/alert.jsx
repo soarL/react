@@ -8,6 +8,7 @@ import {
 	Spin,
 	BackTop,
 	Divider,
+	Tooltip
 } from 'antd'
 
 import './index.less'
@@ -266,6 +267,9 @@ class Alert extends Component {
 
 				<BackTop />
 				<Divider dashed />
+				<Tooltip title="is very good">
+				    <span>Tooltip will show when mouse enter.</span>
+				</Tooltip>
 			</div>
 		)
 	}
