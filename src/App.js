@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route , Switch , HashRouter } from 'react-router-dom';
+import { Route , Switch , HashRouter } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import { Row, Col} from 'antd'
 import './App.less'
@@ -104,4 +104,4 @@ class App extends Component {
 }
 
 
-export default App;
+export default App

@@ -7,4 +7,3 @@ var obj = {
 	password:'123',
 	xxx:'asdasd'
 }
-console.log(...obj)
