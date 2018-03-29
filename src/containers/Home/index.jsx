@@ -12,7 +12,7 @@ import './index.less'
 class Home extends Component{
 	async hhs(){
 		let aff = await homeApi.getData()
-		this.props.onchange(aff.data[0].newSketch)
+		this.props.onchange(aff.data)
 	}
 	render(){
 		return(

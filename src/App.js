@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route , Switch , HashRouter } from 'react-router-dom'
+import { Route , Switch ,BrowserRouter } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import { Row, Col} from 'antd'
 import './App.less'
@@ -9,7 +9,8 @@ import {
   Header,
   Footer,
   loading,
-  LeftMenu
+  LeftMenu,
+  Breadcrumb
 } from '@/components'
 
 
@@ -65,31 +66,34 @@ class App extends Component {
 
   render() {
     return (
-        <HashRouter>
-           <div className='container'>
-               <Row>
+        <BrowserRouter>
+           <div>
+               <Row className="header-fixed">
                  <Col span={24}>
                    <Header />
                  </Col>
                </Row>
+               <Breadcrumb/>
 
-               <Row>
-                 <Col span={4}>
-                    <LeftMenu />
-                 </Col>
-                 <Col span={20}>
-                   <Switch>
-                     <Route path="/" exact component={Home} />
-                     <Route path="/antd/base" component={ AsyncAntdBase }/>
-                     <Route path="/antd/from" component={ AsyncAntdFrom }/>
-                     <Route path="/antd/alert" component={ AsyncAntdAlert }/>
-                     <Route path="/antd/steps" component={ AsyncAntdSteps }/>
-                     <Route path="/antd/upload" component={ AsyncAntdUpload }/>
-                     <Route path="/antd/tabs" component={ AsyncAntdTabs }/>
-                     <Route path="/antd/carousel" component={ AsyncAntdCarousel }/>
-                 </Switch>
-                 </Col>
-               </Row>
+              <div className="main">
+                 <Row className="container">
+                   <Col span={4}>
+                      <LeftMenu />
+                   </Col>
+                   <Col span={20}>
+                     <Switch>
+                       <Route path="/" exact component={Home} />
+                       <Route path="/antd/base" component={ AsyncAntdBase }/>
+                       <Route path="/antd/from" component={ AsyncAntdFrom }/>
+                       <Route path="/antd/alert" component={ AsyncAntdAlert }/>
+                       <Route path="/antd/steps" component={ AsyncAntdSteps }/>
+                       <Route path="/antd/upload" component={ AsyncAntdUpload }/>
+                       <Route path="/antd/tabs" component={ AsyncAntdTabs }/>
+                       <Route path="/antd/carousel" component={ AsyncAntdCarousel }/>
+                     </Switch>
+                   </Col>
+                 </Row>
+               </div>
 
                <Row>
                   <Col span={24}>
@@ -98,7 +102,7 @@ class App extends Component {
                </Row>
                
             </div>
-       </HashRouter>
+       </BrowserRouter>
     )
   }
 }

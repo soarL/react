@@ -10,6 +10,7 @@ import {
 	Divider,
 	Tooltip
 } from 'antd'
+import homeAPI from '@/api/home'
 
 import './index.less'
 
@@ -21,7 +22,9 @@ class Alert extends Component {
 			visible:false,
 			visibles:false,
 			loading:false,
-			spinning:false
+			spinning:false,
+			message:'            ',
+			messageSpin:true
 		}
 	}
 	showModal(){
@@ -36,6 +39,14 @@ class Alert extends Component {
 	}
 	componentWillMount() {
 		message.info('欢迎来到弹窗组件')
+
+	}
+	async componentDidMount() {
+		let data = await homeAPI.getMath()
+		this.setState({
+			message:data.xx,
+			messageSpin:false
+		})
 	}
 	handleOk(e,y){
 		message.info('您选择了确定')
@@ -150,12 +161,14 @@ class Alert extends Component {
 					 	type="success" 
 					 	/>
 					 <Divider dashed />
+					 <Spin spinning={this.state.messageSpin} size='small'>
 					 <AlertAntd 
-					 	message="Success" 
+					 	message={this.state.message} 
 					 	type="success" 
 					 	showIcon
 					 	closable 
 					 	/>
+					 </Spin>
 					 <Divider dashed />
 					 <AlertAntd 
 					 	message="info"

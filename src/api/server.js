@@ -1,5 +1,5 @@
 import promise from 'es6-promise'
-import * as config from '@/config' 
+import * as config from '@/config'
 promise.polyfill();
 const  axios = require('axios')
 

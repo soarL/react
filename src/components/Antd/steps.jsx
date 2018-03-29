@@ -33,15 +33,15 @@ class Stepse extends Component{
 	componentWillMount() {
 		message.info('步骤条')
 	}
-
 	next(){
+
 		this.setState({
-			current:this.state.current+=1
+			current:this.state.current+1
 		})
 	}
 	prev(){
 		this.setState({
-			current:this.state.current-=1
+			current:this.state.current-1
 		})
 	}
 	render(){

@@ -1,5 +1,20 @@
-const baseURL = "http://www.linzantian.com"
+let baseURL,
+	ENV = process.env.NODE_ENV,
+	web={
+		main:'https://www.91hc.com',
+		user:'http://user.91hc.com'
+	}
 
-export{
-	baseURL
+if(ENV==="development"){
+	// 开发环境中使用代理避免跨域问题
+	baseURL=''
+}else{
+	// 生产环境中真实地址
+	baseURL='https://www.91hc.com'
+}
+
+
+export {
+	baseURL,
+	web
 }

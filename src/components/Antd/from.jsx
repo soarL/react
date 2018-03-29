@@ -24,7 +24,7 @@ class WrapFrom extends Component {
 	async sendCode(){
 		// let phone = this.props.form.getFieldValue('smsCode')
 		let data = await APIHome.getData()
-		return data.data[1].newsName
+		return data.data
 	}
 
 	render(){

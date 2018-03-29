@@ -1,7 +1,83 @@
-.header{
-	.nav li{
-		display: inline-block;
-		margin: 0 5px;
-		padding: 5px;
+.header-box{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	left: 0;
+	z-index: 99;
+	.header{
+		background-color: #f2f2f2;
+		border-bottom: 1px solid #dbdbdb;
+		line-height: 35px;
+		font-size: 15px;
+		color: #2e2e2e;
+		.left{
+			text-align: right;
+			color: #9d9d9d;
+			font-size: 15px;
+			a{
+				margin-right: 10px;
+				margin-left: 10px;
+			}
+		}
+		.phone{
+			color: #f2660e;
+			margin-right: 10px;
+			margin-left: 10px;
+		}
+		.qq{
+			margin-right: 8px;
+			margin-left: 8px;
+		}
+		.enter{
+			color: #54b16b;
+		}
+		.login{
+			color:#208dd0;
+		}
+		.new-use{
+			color: #2e2e2e;
+		}
+		.weixin{
+			position: relative;
+			cursor: pointer;
+			.ouput{
+				position: absolute;
+			    top: 24px;
+			    left: -296%;
+				width: 150px;
+				transition: all 0.5s;
+			}
+		}
+	}
+	.nav{
+		background-color: #fff;
+		border-bottom: 1px solid #bebcbd;
+		padding: 7px 0;
+		.list-inline {
+		    padding-left: 0;
+		    margin-left: -5px;
+		    list-style: none;
+		    text-align: right;
+		    line-height: 60px;
+		    li{
+		    	display: inline-block;
+		    	a{
+		    		margin-left: 20px;
+		    		font-size: 15px;
+		    		color: #333;
+		    		padding-bottom: 12px;
+		    		padding-left: 5px;
+		    		padding-right: 5px;
+		    	}
+		    	a:hover{
+		    		border-bottom: 2px solid #0989d4;
+		    		color: #0989d4;
+		    	}
+		    	.nav-active{
+		    		border-bottom: 2px solid #0989d4;
+		    		color: #0989d4;
+		    	}
+		    }
+		}
 	}
 }
