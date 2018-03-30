@@ -74,7 +74,7 @@ class Footer extends Component{
 						<li><a href={web.main+"/about/risk"}>风险揭示书</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href={web.main+"/contract/borrow"}>借款须知</a></li>
 					</ul>
-					<p>2017版本&nbsp;&nbsp;|&nbsp;&nbsp;福州汇诚普惠外包服务有限公司&nbsp;&nbsp;闽ICP备17009379号-2</p>
+					<p>2017版本&nbsp;&nbsp;|&nbsp;&nbsp;福州汇诚金融外包服务有限公司&nbsp;&nbsp;闽ICP备17009379号-2</p>
 				</div>
 			</div>
 		)
