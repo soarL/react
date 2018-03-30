@@ -4,7 +4,8 @@ import {
 	Row,
 	Col,
 	Button,
-	Tooltip
+	Tooltip,
+	Popconfirm
 } from 'antd'
 
 
@@ -13,8 +14,16 @@ class UserInfo extends Component{
 		super(props)
 		this.state={
 			phone:'13774770527',
-
+			id:0,
+			bank:0,
+			email:0
 		}
+	}
+	confirm = (e)=>{
+		console.log(e)
+	}
+	cancel = (e)=>{
+		console.log(e)
 	}
 	render(){
 		return(
@@ -34,15 +43,18 @@ class UserInfo extends Component{
 		                        	<Tooltip title="手机号码已经注册！">
 		                        		<span></span>
 		                        	</Tooltip>
-		                        	<Tooltip title="邮箱已认证！">
-			                        	<span></span>
+		                        	<Tooltip title={this.state.id ? "身份已认证！" :"身份未认证！"}>
+			                        	<span className={this.state.id ? '' : 'off'}></span>
 		                        	</Tooltip>
-		                        	<Tooltip title="未绑定银行存管">
-		                        		<span></span>
+		                        	<Tooltip title={this.state.bank? "已绑定银行卡！" :"未绑定银行卡！" }>
+	                        		  <Popconfirm title="投资前需要进行实名认证？" onConfirm={this.confirm} onCancel={this.cancel} okText="立即认证" cancelText="关闭"  placement="bottom" defaultVisible={this.state.bank ?  false : true} >
+									    <span className={this.state.bank ? '' : 'off'}></span>
+									  </Popconfirm>
 		                        	</Tooltip>
-		                        	<Tooltip>
-		                        	<span></span>
-		                        		
+
+
+		                        	<Tooltip title={this.state.bank ? "邮箱已绑定！":"邮箱未绑定！"}>
+		                        		<span className={this.state.bank ? '' : 'off'}></span>
 		                        	</Tooltip>
 		                        </dd>
 		                    </dl>
