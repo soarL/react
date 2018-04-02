@@ -1,5 +1,6 @@
 import promise from 'es6-promise'
 import * as config from '@/config'
+import crypto from 'crypto'
 promise.polyfill();
 const  axios = require('axios')
 
@@ -75,6 +76,17 @@ export default class Server {
         }
       })
     })
+  }
+
+  sign(params={}){
+    let str="";
+    for (let key in params){
+        str += key + "=" + params[key] +"&"
+    }
+    str = str.slice(0,-1) + config.authKey
+    var md5 = crypto.createHash("md5");
+    md5.update(str);
+    return md5.digest('hex')
   }
 
   use(){

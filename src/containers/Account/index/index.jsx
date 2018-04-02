@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux'
-import { onchange , back } from '@/actions/home'
+// import { onchange , back } from '@/actions/home'
 
 import UserInfo from './UserInfo'
 import AssetDetails from './AssetDetails'
@@ -14,7 +14,7 @@ class Index extends Component{
 		return(
 			<div className="index">
 				<div className="box">
-					<UserInfo/>	
+					<UserInfo data={ this.props}/>
 				</div>
 				<div className="box">
 					<AssetDetails/>
@@ -32,6 +32,4 @@ const mapStateToProps = (state)=>{
 }
 
 export default connect(mapStateToProps,{
-	onchange,
-	back
 })(Index)

@@ -1,11 +1,11 @@
 import React,{ Component } from 'react'
-import loginAPI from '@/api/login'
 import userAPI from '@/api/user'
 
 import './index.less'
 import {
 	Row,
 	Col,
+	message,
 } from 'antd'
 
 import {
@@ -34,11 +34,11 @@ class Header extends Component{
 	}
 
 	loginOut = ()=>{
-		loginAPI.loginOut()
+		message.success('退出成功')
 	}
 
 	async componentDidMount() {
-		let data =await userAPI.userInfo()
+		let data =await userAPI.getUserInfo()
 		this.setState({
 			userPhone:data.phone
 		})

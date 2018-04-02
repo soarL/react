@@ -16,14 +16,17 @@ class UserInfo extends Component{
 			phone:'13774770527',
 			id:0,
 			bank:0,
-			email:0
+			email:0,
+			fundMoney:0,
+			stayAll:0,
+			getInterest:0,
+			lotteryCount:0,
+			imiMoney:0
 		}
 	}
 	confirm = (e)=>{
-		console.log(e)
 	}
 	cancel = (e)=>{
-		console.log(e)
 	}
 	render(){
 		return(
@@ -31,12 +34,12 @@ class UserInfo extends Component{
 
                 <div className="pandectHeadTop">
                 	<Row>
-                		<Col span={ 5 }>
+                		<Col span={ 6 }>
                 			<div className="user-img">
                     			<img  src="http://asset.eph.com/web/user/img/userImg.png" alt="userImg"/>
                 			</div>
                 		</Col>
-                		<Col span={ 11}>
+                		<Col span={ 10 }>
 		                    <dl className="pandectHeadData">
 		                        <dt>用户名:<span>{this.state.phone}</span> 会员等级:<span>暂未开放</span></dt>
 		                        <dd className="userState">
@@ -73,27 +76,38 @@ class UserInfo extends Component{
                 </div>
 
                 <div className="pandectHeadButton">
-                    <dl>
-                        <dt><span></span>元</dt>
-                        <dd>账户余额</dd>
-                    </dl>
-                    <dl>
-                        <dt><span></span>元</dt>
-                        <dd>待收资产总额</dd>
-                    </dl>
-                    <dl>
-                        <dt><span></span>元</dt>
-                        <dd>收益总金额</dd>
-                    </dl>
-                    <dl>
-                        <dt><a className="pandectHeadButton-4" style={{fontSize:"24px"}} href="/account/lotteries">xx</a>张</dt>
-                        <dd>可用红包券</dd>
-                    </dl>
-                    <dl>
-                        <dt><span className="pandectHeadButton-4"></span>元</dt>
-                        <dd>可用体验金</dd>
-                    </dl>
-                    <div className="clearfix"></div>
+                	<Row>
+                		<Col span={5}>
+                			<p>
+                				<span>{this.state.fundMoney}</span>元
+                			</p>
+                			<p>账户余额</p>
+                		</Col>
+                		<Col span={5}>
+                			<p>
+                				<span>{this.state.stayAll}</span>元
+                			</p>
+                			<p>待收资产总额</p>
+                		</Col>
+                		<Col span={5}>
+                			<p>
+                				<span>{this.state.getInterest}</span>元
+                			</p>
+                			<p>收益总金额</p>
+                		</Col>
+                		<Col span={5}>
+                			<p>
+                				<Link to="/privilege/lotteries"><span className="origin">{this.state.lotteryCount}</span></Link>张
+                			</p>
+                			<p>可用红包券</p>
+                		</Col>
+                		<Col span={4}>
+	                		<p>
+	                			<span className="origin">{this.state.imiMoney}</span>元
+	                		</p>
+                			<p>可用体验金</p>
+                		</Col>
+                	</Row>
                 </div>
             </div>
 		)

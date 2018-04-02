@@ -61,7 +61,6 @@ class App extends Component {
                      <Footer/>
                   </Col>
                </Row>
-
             </div>
        </BrowserRouter>
     )

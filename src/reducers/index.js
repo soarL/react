@@ -1,6 +1,5 @@
-import homeReducer from './home/reducer.js'
-
+import indexReducer from './Account/index'
 
 export {
-	homeReducer,
+	indexReducer,
 }
