@@ -16,7 +16,6 @@ import {
 class UserInfo extends Component{
 	constructor(props){
 		super(props)
-		console.log(storage.Storage)
 		this.state={
 			phone:storage.get('phone'),
 			id:(()=>{

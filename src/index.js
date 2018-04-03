@@ -21,5 +21,5 @@ ReactDOM.render(
 					<Route path="/" component={ App }></Route>
 				</Switch>			
 		</BrowserRouter>,
-		document.getElementById('root')
+	document.getElementById('root')
 )
