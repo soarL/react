@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route , Switch ,BrowserRouter ,Redirect} from 'react-router-dom'
+import { Route , Switch ,Redirect,withRouter} from 'react-router-dom'
 import Loadable from 'react-loadable'
-import { Row, Col} from 'antd'
+import { Row, Col,message} from 'antd'
+import storage from '@/api/localStorage'
 import './App.less'
-
 // 只负责显示的组件
 import {
   Header,
@@ -23,6 +23,15 @@ const AsyncAntdBase = Loadable({
 })
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    if(!storage.get('userId')){
+      message.error('您还未登录')
+      setTimeout(()=>{
+        this.props.history.push('/login/login')
+      },1000)
+    }
+  }
   componentDidMount() {
     // 做于预渲染
     AsyncAntdBase.preload()
@@ -30,43 +39,41 @@ class App extends Component {
 
   render() {
     return (
-        <BrowserRouter>
-           <div>
-               <Row className="header-fixed">
-                 <Col span={24}>
-                   <Header />
+         <div>
+             <Row className="header-fixed">
+               <Col span={24}>
+                 <Header />
+               </Col>
+             </Row>
+             <div className="bodytop"></div>
+            <Breadcrumb/>
+
+            <div className="main">
+               <Row className="container">
+                 <Col span={4}>
+                    <LeftMenu />
+                 </Col>
+                 <Col span={20}>
+                     <div className="main-right">
+                       <Switch>
+                         <Route path="/account/index" component={ Index } />
+                         <Route path="/account/logs" component={ AsyncAntdBase }/>
+                         <Redirect path='/' to={{pathname:'/account/index'}}/>
+                       </Switch>
+                     </div>
                  </Col>
                </Row>
-               <Breadcrumb/>
-
-              <div className="main">
-                 <Row className="container">
-                   <Col span={4}>
-                      <LeftMenu />
-                   </Col>
-                   <Col span={20}>
-                       <div className="main-right">
-                         <Switch>
-                           <Route path="/account/index" component={ Index } />
-                           <Route path="/account/logs" component={ AsyncAntdBase }/>
-                           <Redirect path='/' to={{pathname:'/account/index'}}/>
-                         </Switch>
-                       </div>
-                   </Col>
-                 </Row>
-               </div>
-               
-               <Row>
-                  <Col span={24}>
-                     <Footer/>
-                  </Col>
-               </Row>
-
-            </div>
-       </BrowserRouter>
+             </div>
+             
+             <Row>
+                <Col span={24}>
+                   <Footer/>
+                </Col>
+             </Row>
+        </div>
     )
   }
 }
 
 
-export default App
+export default withRouter(App)

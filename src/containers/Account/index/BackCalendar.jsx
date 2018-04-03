@@ -1,10 +1,13 @@
 import React,{ Component } from 'react'
 
+
 class BackCalendar extends Component{
+
+
 	render(){
 		return(
 			<div>
-				BackCalendar
+				回款日历
 			</div>
 		)
 	}

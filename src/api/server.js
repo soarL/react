@@ -1,5 +1,6 @@
 import promise from 'es6-promise'
 import * as config from '@/config'
+import crypto from 'crypto'
 promise.polyfill();
 const  axios = require('axios')
 
@@ -15,6 +16,10 @@ const  axios = require('axios')
 export default class Server {
 
   GET(url,params={},option={}){
+
+    params = this.keySort(params)
+    params.sign = this.sign(params)
+
     return new Promise((resolve, reject) => {
       let _options = {
         method:"get",
@@ -40,6 +45,10 @@ export default class Server {
   }
   
   POST(url,data={},option={}){
+    
+    data = this.keySort(data)
+    data.sign = this.sign(data)
+
     return new Promise((resolve, reject) => {
       let _options = {
         method:"post",
@@ -77,6 +86,37 @@ export default class Server {
     })
   }
 
+  keySort(params={}){
+
+      var newkey = Object.keys(params).sort()
+      var newObj = {};
+      for (var i = 0; i < newkey.length; i++) {
+          newObj[newkey[i]] = params[newkey[i]]
+      }
+      return newObj;
+  }
+
+  keyASort(params={}){
+
+      var newkey = Object.keys(params).sort().reverse()
+      var newObj = {}
+      for (var i = 0; i < newkey.length; i++) {
+          newObj[newkey[i]] = params[newkey[i]]
+      }
+      return newObj;
+  }
+
+  sign(params={}){
+    let str="";
+    for (let key in params){
+        str += key + "=" + params[key] +"&"
+    }
+    str = str.slice(0,-1) + config.authKey
+    var md5 = crypto.createHash("md5");
+    md5.update(str);
+    return md5.digest('hex')
+  }
+  
   use(){
     console.log('自己看文档啊')    
   }

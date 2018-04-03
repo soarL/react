@@ -13,8 +13,10 @@ if(ENV==="development"){
 	baseURL='https://www.91hc.com'
 }
 
+let authKey = "abcdeft12345"
 
 export {
 	baseURL,
-	web
+	web,
+	authKey
 }
