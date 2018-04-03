@@ -13,9 +13,8 @@
 
 #相关技术栈
 1、React  + React-Router-dom  
-2、Redux   react-redux 状态管理插件
-3、highcharts 画表格插件
-4、ant design UI组件库
+2、highcharts 画表格插件
+3、ant design UI组件库
 
 命名规范
 
