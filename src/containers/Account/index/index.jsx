@@ -1,6 +1,4 @@
 import React,{ Component } from 'react'
-import { connect } from 'react-redux'
-// import { onchange , back } from '@/actions/home'
 
 import UserInfo from './UserInfo'
 import AssetDetails from './AssetDetails'
@@ -27,9 +25,5 @@ class Index extends Component{
 	}
 }
 
-const mapStateToProps = (state)=>{
-	return state
-}
 
-export default connect(mapStateToProps,{
-})(Index)
+export default Index

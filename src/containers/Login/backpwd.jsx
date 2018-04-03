@@ -5,22 +5,24 @@ import {
 	Form,
 	Icon,
 	Input,
-	Button,
-	Checkbox,
+	Button
 } from 'antd'
 
 import { Link } from 'react-router-dom'
 
 import userAPI from '@/api/user'
+import smsAPI from '@/api/sms'
 
 const FormItem = Form.Item
 
-class Login extends Component{
-
-	
+class BackPWD extends Component{
+	// 异步
 	async sendCode(){
-		// let phone = this.props.form.getFieldValue('smsCode')
-		let data = await userAPI.userLogin({asd:"asd"})
+		let phone = this.props.form.getFieldValue('phone')
+		if(!phone){
+			return "请输入手机号"
+		}
+		let data = await smsAPI.forget({phone:phone})
 		return data
 	}
 
@@ -30,28 +32,20 @@ class Login extends Component{
 		    e.preventDefault() // 不跳转
 		    this.props.form.validateFields((err, values) => {
 		      if (!err) {
-		        userAPI.userLogin(values,this.props.history)
+		        userAPI.userForget(values,this.props.history)
 		      }
 		  })
 		}
 
 		return(
 			<div className="login">
-				<h1 className="welcome">欢迎登录</h1>
+				<h1 className="welcome">找回密码</h1>
 				<Form onSubmit={handleSubmit}>
 					<FormItem hasFeedback>
 						{
-							getFieldDecorator('username',{
+							getFieldDecorator('phone',{
 								rules:verify.phone
 							})(<Input prefix={<Icon type='phone'/>} style={{color:'rgba(0,0,0,0.25)'}} type='text' placeholder='请输入手机号码'/>)
-						}
-					</FormItem>
-
-					<FormItem hasFeedback>
-						{
-							getFieldDecorator('password',{
-								rules:verify.password
-							})(<Input prefix={<Icon type='lock'/>} style={{color:'rgba(0,0,0,0.25)'}} type='password' placeholder='密码为8~16位数字、字母和符号组合'/>)
 						}
 					</FormItem>
 
@@ -62,21 +56,29 @@ class Login extends Component{
 						second={ 60 } 
 						getFieldDecorator={ getFieldDecorator } 
 						getFieldDecoratorAGM={[
-							"smsCode",{rules:verify.smsCode}
-							]} callback={this.sendCode}
+							"phoneCode",{rules:verify.smsCode}
+							]} callback={this.sendCode.bind(this)}
 						/>
 
-					<FormItem >
-				      {getFieldDecorator('remember', {
-				      	valuePropName: 'checked',
-				      	initialValue: true,
-			            rules:[{
-			            	required:false
-			            }]
-			          })(<Checkbox className="hint">保持登录状态（7天内免登录）忘记密码？<Link to="/login/backpwd">找回密码</Link></Checkbox>)}
+					<FormItem hasFeedback>
+						{
+							getFieldDecorator('loginpass',{
+								rules:verify.password
+							})(<Input prefix={<Icon type='lock'/>} style={{color:'rgba(0,0,0,0.25)'}} type='password' placeholder='请输入新密码'/>)
+						}
 					</FormItem>
 
-					<p className="hint">还没有账号？点击这里 <Link to="/login/register">免费注册</Link></p>
+					<FormItem hasFeedback>
+						{
+							getFieldDecorator('loginpassSure',{
+								rules:[{
+									validator:verify.passwordAgain('两次密码不一样',this.props.form.getFieldValue('loginpass'))
+								}],
+							})(<Input prefix={<Icon type='lock'/>} style={{color:'rgba(0,0,0,0.25)'}} type='password' placeholder='确认新密码'/>)
+						}
+					</FormItem>
+
+					<p className="hint">记得密码？ <Link to="/login/login">返回登录</Link></p>
 
 					<FormItem>
 						<Button 
@@ -84,7 +86,7 @@ class Login extends Component{
 							disabled={verify.isDisabled(getFieldsError())}
 							className="login-btn"
 							htmlType='submit'>
-							登录
+							确定
 						</Button>
 					</FormItem>
 
@@ -94,6 +96,6 @@ class Login extends Component{
 	}
 }
 
-const LoginForm = Form.create()(Login)
+const BackPWDForm = Form.create()(BackPWD)
 
-export default LoginForm
+export default BackPWDForm

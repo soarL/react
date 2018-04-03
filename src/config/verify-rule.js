@@ -37,6 +37,16 @@ const password=[
 		{max:16,message:'密码长度不能超过16位'},
 		{required:true, message:'请填写登录密码'}]
 
+const passwordAgain=(message,pwd)=>{
+	return (rule,value,callback)=>{
+	if (value && value !== pwd) {
+	      callback(message);
+	    } else {
+	      callback();
+	    }
+	}
+}
+
 const email =[
 		{type: 'email', message: 'The input is not valid E-mail!'},
 		{required: false, message: 'Please input your E-mail!'}]
@@ -68,5 +78,6 @@ export{
 	isDisabled,
 	isChecked,
 	strFriendPhone,
+	passwordAgain,
 	smsCode
 } 

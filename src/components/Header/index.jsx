@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
-import userAPI from '@/api/user'
+import { withRouter } from 'react-router-dom'
+import storage from '@/api/localStorage'
 
 import './index.less'
 import {
@@ -12,14 +13,12 @@ import {
 	web
 } from '@/config'
 
-
-
 class Header extends Component{
 	constructor(props){
 		super(props)
 		this.state={
 			weixin:0,
-			userPhone:''
+			userPhone:storage.get('phone')
 		}
 	}
 	weiXinShow = ()=>{
@@ -34,14 +33,11 @@ class Header extends Component{
 	}
 
 	loginOut = ()=>{
+		storage.delAll()
 		message.success('退出成功')
-	}
-
-	async componentDidMount() {
-		let data =await userAPI.getUserInfo()
-		this.setState({
-			userPhone:data.phone
-		})
+		setTimeout(()=>{
+			this.props.history.push('/login/login')
+		},1000)
 	}
 
 	render() {
@@ -65,7 +61,7 @@ class Header extends Component{
 							<Col span={10} className="left">
 								<a className="enter">{this.state.userPhone}</a>
 								|
-								<a className="login" onClick={this.loginOut}>退出</a>
+								<a className="login" onClick={this.loginOut.bind(this)}>退出</a>
 								|
 								<a href={web.main+'/help'} className='new-use' target="_blank" rel="noopener noreferrer">新手指南</a>
 							</Col>
@@ -96,4 +92,4 @@ class Header extends Component{
 	}
 }
 
-export default Header
+export default withRouter(Header)

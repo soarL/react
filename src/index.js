@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Route , Switch ,BrowserRouter} from 'react-router-dom'
-import { Provider } from 'react-redux'
+import { Route , Switch ,BrowserRouter } from 'react-router-dom'
 import App from '@/App'
-import store from '@/store.js'
 import Loadable from 'react-loadable'
+import 'moment/locale/zh-cn'
 
 import {
   loading,
@@ -16,13 +15,11 @@ const AsyncLogin = Loadable({
 })
 
 ReactDOM.render(
-	<Provider store = { store } >
 		<BrowserRouter>
-			<Switch>
-				<Route path="/login" component={ AsyncLogin }></Route>
-				<Route path="/" component={ App }></Route>
-			</Switch>			
-		</BrowserRouter>
-	</Provider>,
+				<Switch>
+					<Route path="/login" component={ AsyncLogin }></Route>
+					<Route path="/" component={ App }></Route>
+				</Switch>			
+		</BrowserRouter>,
 		document.getElementById('root')
 )

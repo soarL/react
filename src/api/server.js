@@ -16,6 +16,10 @@ const  axios = require('axios')
 export default class Server {
 
   GET(url,params={},option={}){
+
+    params = this.keySort(params)
+    params.sign = this.sign(params)
+
     return new Promise((resolve, reject) => {
       let _options = {
         method:"get",
@@ -41,6 +45,10 @@ export default class Server {
   }
   
   POST(url,data={},option={}){
+    
+    data = this.keySort(data)
+    data.sign = this.sign(data)
+
     return new Promise((resolve, reject) => {
       let _options = {
         method:"post",
@@ -78,6 +86,26 @@ export default class Server {
     })
   }
 
+  keySort(params={}){
+
+      var newkey = Object.keys(params).sort()
+      var newObj = {};
+      for (var i = 0; i < newkey.length; i++) {
+          newObj[newkey[i]] = params[newkey[i]]
+      }
+      return newObj;
+  }
+
+  keyASort(params={}){
+
+      var newkey = Object.keys(params).sort().reverse()
+      var newObj = {}
+      for (var i = 0; i < newkey.length; i++) {
+          newObj[newkey[i]] = params[newkey[i]]
+      }
+      return newObj;
+  }
+
   sign(params={}){
     let str="";
     for (let key in params){
@@ -88,7 +116,7 @@ export default class Server {
     md5.update(str);
     return md5.digest('hex')
   }
-
+  
   use(){
     console.log('自己看文档啊')    
   }

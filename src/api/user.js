@@ -1,22 +1,47 @@
 import Server from '@/api/server'
+import {
+	message,
+} from 'antd'
+import storage from '@/api/localStorage'
 
 class User extends Server{
-	async userLogin(params){
-
-		params = {
-			password:'123456',
-			username:'13774770527'
-		}
-		params.sign = this.sign(params)
-
+	async userLogin(params,history){
 		let data = await this.POST('/login',params)
-
-		console.log(data)
+		if(data.status===1){
+			message.success(data.msg)
+			storage.add(data.data)
+			setTimeout(()=>{
+				history.push('/account/index')
+			},1000)
+		}else{
+			message.error(data.msg)
+		}
 	}
 
-	async getUserInfo(){
-		let data = await this.POST('/api/user/info')
-		return data.data
+	async userRegister(params,history){
+		let data = await this.POST('/register',params)
+		if(data.status===1){
+			message.success(data.msg)
+			storage.add(data.data)
+			setTimeout(()=>{
+				history.push('/login/login')
+			},1000)
+		}else{
+			message.error(data.msg)
+		}
+	}
+
+	async userForget(params,history){
+		let data = await this.POST('/forgetLoginpass',params)
+		if(data.status===1){
+			message.success(data.msg)
+			storage.add(data.data)
+			setTimeout(()=>{
+				history.push('/login/login')
+			},1000)
+		}else{
+			message.error(data.msg)
+		}
 	}
 }
 

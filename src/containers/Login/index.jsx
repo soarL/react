@@ -7,6 +7,7 @@ import {
 } from '@/config'
 import Login from './login'
 import Register from './register'
+import BackPWD from './backpwd'
 
 import {
 	Row,
@@ -41,6 +42,7 @@ class UserLogin extends Component{
 									<Switch>
 										<Route path="/login/login" component={ Login }></Route>
 										<Route path="/login/register" component={ Register }></Route>
+										<Route path="/login/backpwd" component={ BackPWD }></Route>
 										<Redirect path='/login' to={{pathname:'/login/login'}}/>
 									</Switch>
 								</div>
@@ -51,7 +53,7 @@ class UserLogin extends Component{
 						</Row>
 					</div>
 				</div>
-
+				
 				<footer className="login_footer">© 2017 汇诚普惠 91hc.com&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;福州汇诚金融外包服务有限公司&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;闽ICP备17009379号-2&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;市场有风险，投资需谨慎</footer>
 
 			</div>
