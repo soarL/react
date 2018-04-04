@@ -2,7 +2,7 @@
   "name": "app_user",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost/",
+  "homepage": "http://192.168.1.4/",
   "dependencies": {
     "antd": "^3.0.1",
     "autoprefixer": "7.1.6",

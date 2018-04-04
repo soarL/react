@@ -23,13 +23,13 @@ const AsyncAntdBase = Loadable({
 })
 
 class App extends Component {
-  constructor(props){
-    super(props)
+  shouldComponentUpdate(){
     if(!storage.get('userId')){
-      message.error('您还未登录')
-      setTimeout(()=>{
-        this.props.history.push('/login/login')
-      },1000)
+      message.error('您还未登录!!!!!!!')
+      this.props.history.push('/login/login')
+      return false
+    }else{
+      return true
     }
   }
   componentDidMount() {

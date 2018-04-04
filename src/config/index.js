@@ -10,10 +10,10 @@ if(ENV==="development"){
 	baseURL=''
 }else{
 	// 生产环境中真实地址
-	baseURL='https://www.91hc.com'
+	baseURL='http://api.hcjrfw.com/api'
 }
 
-let authKey = "abcdeft12345"
+const authKey = "abcdeft12345"
 
 export {
 	baseURL,

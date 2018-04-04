@@ -28,7 +28,11 @@ class BackCalendar extends Component{
 		}
 	}
 	componentWillMount() {
-		this.onSelect(moment.format('Y-M-D'))
+		this.onSelect(moment())
+		this.onPanelChange(moment())
+		this.setState({
+			monthInterestAmount:0
+		})
 	}
 
 	onSelect = async (value) =>{

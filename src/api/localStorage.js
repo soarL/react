@@ -1,5 +1,5 @@
 /**
- * Storage 本地化存储类
+ * Storage 本地化存储类 过期时间默认7小时。
  * add 添加属性，和改一起
  * del 删除属性，
  * delAll 删除全部，
@@ -16,8 +16,10 @@ class Storage {
 		}else{
 			this.Storage = window.localStorage
 		}
+		this.timeout = 7 * 60 * 60 * 1000
 	}
 	add(data={}){
+		data.timeout = new Date().valueOf() + this.timeout
 		for(let key in data){
 			this.Storage.setItem(key,data[key])
 		}
@@ -29,7 +31,17 @@ class Storage {
 		this.Storage.clear()
 	}
 	get(key){
-		return this.Storage.getItem(key)
+		if(this.Storage.getItem('timeout') > new Date().valueOf()){
+			this.add({})
+			return this.Storage.getItem(key)
+		}else{
+			this.delAll()
+			return this.Storage.getItem(key)
+		}	
+	}
+	setTimer(time){
+		this.timeout = time
+		this.add({})
 	}
 }
 

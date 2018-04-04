@@ -1,6 +1,8 @@
 import promise from 'es6-promise'
 import * as config from '@/config'
 import crypto from 'crypto'
+import storage from '@/api/localStorage'
+
 promise.polyfill();
 const  axios = require('axios')
 
@@ -19,7 +21,7 @@ export default class Server {
 
     params = this.keySort(params)
     params.sign = this.sign(params)
-
+    storage.add({})
     return new Promise((resolve, reject) => {
       let _options = {
         method:"get",
@@ -48,7 +50,7 @@ export default class Server {
     
     data = this.keySort(data)
     data.sign = this.sign(data)
-
+    storage.add({})
     return new Promise((resolve, reject) => {
       let _options = {
         method:"post",

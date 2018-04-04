@@ -8,6 +8,9 @@ class User extends Server{
 	async userLogin(params,history){
 		let data = await this.POST('/login',params)
 		if(data.status===1){
+			if(params.remember){
+				storage.setTimer(7*24*60*60*1000)
+			}
 			message.success(data.msg)
 			storage.add(data.data)
 			setTimeout(()=>{
