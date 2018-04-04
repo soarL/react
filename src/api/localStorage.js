@@ -20,6 +20,7 @@ class Storage {
 	}
 	add(data={}){
 		data.timeout = new Date().valueOf() + this.timeout
+		
 		for(let key in data){
 			this.Storage.setItem(key,data[key])
 		}
@@ -32,7 +33,6 @@ class Storage {
 	}
 	get(key){
 		if(this.Storage.getItem('timeout') > new Date().valueOf()){
-			this.add({})
 			return this.Storage.getItem(key)
 		}else{
 			this.delAll()

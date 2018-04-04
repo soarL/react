@@ -25,7 +25,6 @@ class User extends Server{
 		let data = await this.POST('/register',params)
 		if(data.status===1){
 			message.success(data.msg)
-			storage.add(data.data)
 			setTimeout(()=>{
 				history.push('/login/login')
 			},1000)
@@ -38,7 +37,6 @@ class User extends Server{
 		let data = await this.POST('/forgetLoginpass',params)
 		if(data.status===1){
 			message.success(data.msg)
-			storage.add(data.data)
 			setTimeout(()=>{
 				history.push('/login/login')
 			},1000)
