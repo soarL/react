@@ -2,7 +2,7 @@ let baseURL,
 	ENV = process.env.NODE_ENV,
 	web={
 		main:'https://www.91hc.com',
-		user:'http://user.91hc.com'
+		user:'https://user.91hc.com'
 	}
 
 if(ENV==="development"){

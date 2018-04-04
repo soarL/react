@@ -70,7 +70,7 @@ class Footer extends Component{
 					<ul className="list-unstyled">
 						<li><a href={web.main+"/contract/third"}>资金服务三方协议</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href={web.main+"/contract/register"}>注册协议</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
-						<li>闽ICP备17009379号-1&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+						<li>闽ICP备17009379号-2&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href={web.main+"/about/risk"}>风险揭示书</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 						<li><a href={web.main+"/contract/borrow"}>借款须知</a></li>
 					</ul>

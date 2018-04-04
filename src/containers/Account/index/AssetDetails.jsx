@@ -1,4 +1,10 @@
 import React,{ Component } from 'react'
+import echarts from 'echarts/lib/echarts'
+import Pie from 'echarts/lib/chart/pie'
+import Title from 'echarts/lib/component/title'
+import Tooltip from 'echarts/lib/component/tooltip'
+
+
 import {
 	Link
 } from 'react-router-dom'
@@ -6,6 +12,7 @@ import {
 	Row,
 	Col
 } from 'antd'
+
 
 class AssetDetails extends Component{
 	constructor(props){
@@ -16,6 +23,48 @@ class AssetDetails extends Component{
 			investStayInterest:600,
 			creditStayInterest:900
 		}
+	}
+	componentDidMount() {
+
+		const myChart = echarts.init(document.getElementById('pandectBodyTable'));
+
+		myChart.setOption({
+			backgroundColor: '#fff', //图表的配置颜色
+			color: ['#fa6c43', '#009dec'], //每一项对应的颜色
+			title :{
+		      text :'资产明细',
+		      textStyle:{
+		      	color:'#000',
+		      	fontWeight:'normal',
+		      },
+		      x:'center',
+		      y:'center'
+		    },
+			tooltip : {  //提示框组件
+			               show: true,
+			               formatter: "{a} <br/>{b} : {c} ({d}%)"  //正则设置格式
+			},
+		    series : [{
+                    name:'资产明细',  //名字--用于tooltip的显示
+                    type:'pie',    //类型--饼状图
+                    clockWise:false,   //饼图的扇区是否是顺时针排布。
+                    radius : [70,88], //饼图的半径，数组的第一项是内半径，第二项是外半径。 内半径是0就是一个真正的饼
+                    center:['50%', '50%'], //饼图片的中心
+                    hoverAnimation: true, //是否开启 hover 在扇区上的放大动画效果。
+                    zlevel:2,
+                    data:[  //系列中的数据内容数组
+                        {
+                            value:this.state.investStayCapital + this.state.investStayInterest,     //数据值总的值
+                            name:'承接债权'  //数据项名称。
+                        },
+                        {
+                            value:this.state.creditStayCapital + this.state.creditStayInterest,     //剩下的值
+                            name:'投资散标'
+                        }
+                    ],
+                }]
+		});
+
 	}
 	render(){
 		return(
@@ -38,7 +87,7 @@ class AssetDetails extends Component{
 			    <div className="body">
 			    	<Row>
 			    		<Col span={10}>
-			    			<div id="pandectBodyTable"></div>
+			    			<div id="pandectBodyTable" style={{width:'360px',height:'320px'}}></div>
 			    		</Col>
 			    		<Col span={14}>
 			    			<div className="table">

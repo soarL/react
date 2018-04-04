@@ -4,14 +4,17 @@ import { Route , Switch ,BrowserRouter } from 'react-router-dom'
 import App from '@/App'
 import Loadable from 'react-loadable'
 import 'moment/locale/zh-cn'
+import moment from 'moment'
 
 import {
-  loading,
+  Loading,
 } from '@/components'
+
+moment.locale('zh-cn')
 
 const AsyncLogin = Loadable({
   loader: () => import('@/containers/Login'),
-  loading: loading
+  loading: Loading
 })
 
 ReactDOM.render(

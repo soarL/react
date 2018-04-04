@@ -88,22 +88,22 @@ export default class Server {
 
   keySort(params={}){
 
-      var newkey = Object.keys(params).sort()
-      var newObj = {};
-      for (var i = 0; i < newkey.length; i++) {
-          newObj[newkey[i]] = params[newkey[i]]
+      let key = Object.keys(params).sort()
+      let obj = {};
+      for (let i = 0; i < key.length; i++) {
+          obj[key[i]] = params[key[i]]
       }
-      return newObj;
+      return obj
   }
 
   keyASort(params={}){
 
-      var newkey = Object.keys(params).sort().reverse()
-      var newObj = {}
-      for (var i = 0; i < newkey.length; i++) {
-          newObj[newkey[i]] = params[newkey[i]]
+      let key = Object.keys(params).sort().reverse()
+      let obj = {}
+      for (let i = 0; i < key.length; i++) {
+          obj[key[i]] = params[key[i]]
       }
-      return newObj;
+      return obj
   }
 
   sign(params={}){
@@ -112,13 +112,13 @@ export default class Server {
         str += key + "=" + params[key] +"&"
     }
     str = str.slice(0,-1) + config.authKey
-    var md5 = crypto.createHash("md5");
-    md5.update(str);
+    let md5 = crypto.createHash("md5")
+    md5.update(str)
     return md5.digest('hex')
   }
   
-  use(){
-    console.log('自己看文档啊')    
+  dir(){
+    console.log('自己看代码啊')    
   }
   
 }

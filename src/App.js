@@ -4,11 +4,11 @@ import Loadable from 'react-loadable'
 import { Row, Col,message} from 'antd'
 import storage from '@/api/localStorage'
 import './App.less'
-// 只负责显示的组件
+
 import {
   Header,
   Footer,
-  loading,
+  Loading,
   LeftMenu,
   Breadcrumb
 } from '@/components'
@@ -19,7 +19,7 @@ import Index from '@/containers/Account/index'
 
 const AsyncAntdBase = Loadable({
   loader: () => import('@/components/Antd/base'),
-  loading: loading
+  loading: Loading
 })
 
 class App extends Component {

@@ -22,17 +22,29 @@ class Sms extends Server{
 	async forgetPaypass(params){
 		params.msgType = 'forgetPaypass'
 		let data = await this.POST("/sms",params)
-		console.log(data)
+		if(data.status===1){
+			return "0000"
+		}else{
+			return data.msg
+		}
 	}
 	async transfer(params){
 		params.msgType = 'transfer'
 		let data = await this.POST("/sms",params)
-		console.log(data)
+		if(data.status===1){
+			return "0000"
+		}else{
+			return data.msg
+		}
 	}
 	async orderLoan(params){
 		params.msgType = 'orderLoan'
 		let data = await this.POST("/sms",params)
-		console.log(data)
+		if(data.status===1){
+			return "0000"
+		}else{
+			return data.msg
+		}
 	}
 }
 
