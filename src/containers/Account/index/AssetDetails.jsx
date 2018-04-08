@@ -1,8 +1,8 @@
 import React,{ Component } from 'react'
 import echarts from 'echarts/lib/echarts'
-import Pie from 'echarts/lib/chart/pie'
-import Title from 'echarts/lib/component/title'
-import Tooltip from 'echarts/lib/component/tooltip'
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/tooltip'
 
 
 import {

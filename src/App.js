@@ -17,15 +17,16 @@ import {
 // 容器组件 业务组件就是有状态的组件//按需加载
 import Index from '@/containers/Account/index'
 
-const AsyncAntdBase = Loadable({
-  loader: () => import('@/components/Antd/base'),
+const AsyncAccountDetail = Loadable({
+  loader: () => import('@/containers/Account/detail'),
   loading: Loading
 })
+
 
 class App extends Component {
   shouldComponentUpdate(){
     if(!storage.get('userId')){
-      message.error('您还未登录!!!!!!!')
+      message.error('您还未登录!')
       this.props.history.push('/login/login')
       return false
     }else{
@@ -34,7 +35,7 @@ class App extends Component {
   }
   componentDidMount() {
     // 做于预渲染
-    AsyncAntdBase.preload()
+    AsyncAccountDetail.preload()
   }
 
   render() {
@@ -57,7 +58,7 @@ class App extends Component {
                      <div className="main-right">
                        <Switch>
                          <Route path="/account/index" component={ Index } />
-                         <Route path="/account/logs" component={ AsyncAntdBase }/>
+                         <Route path="/account/detail" component={ AsyncAccountDetail }/>
                          <Redirect path='/' to={{pathname:'/account/index'}}/>
                        </Switch>
                      </div>
